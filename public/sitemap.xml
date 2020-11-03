@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/prvdlworkshop/</loc>
+    <lastmod>2020-03-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/lab0/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/lab1/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/lab2/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/lab3/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/lab4/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/prvdlworkshop/credits/</loc>
+  </url>
+  
+</urlset>

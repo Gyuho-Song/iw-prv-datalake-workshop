@@ -1,0 +1,64 @@
+[
+{
+	"uri": "/prvdlworkshop/",
+	"title": "홈",
+	"tags": [],
+	"description": "",
+	"content": "워크샵제목  워크샵을 소개합니다.\n "
+},
+{
+	"uri": "/prvdlworkshop/lab0/",
+	"title": "실습1. 제목",
+	"tags": [],
+	"description": "",
+	"content": "실습에 대한 설명을 적습니다. 큰제목  순서를 가이드합니다.   "
+},
+{
+	"uri": "/prvdlworkshop/lab1/",
+	"title": "실습2. 제목",
+	"tags": [],
+	"description": "",
+	"content": "실습에 대한 설명을 적습니다. 큰제목  순서를 가이드합니다.   "
+},
+{
+	"uri": "/prvdlworkshop/lab2/",
+	"title": "실습3. 제목",
+	"tags": [],
+	"description": "",
+	"content": "실습에 대한 설명을 적습니다. 큰제목  순서를 가이드합니다.   "
+},
+{
+	"uri": "/prvdlworkshop/lab3/",
+	"title": "실습4. 제목",
+	"tags": [],
+	"description": "",
+	"content": "실습에 대한 설명을 적습니다. 큰제목  순서를 가이드합니다.  "
+},
+{
+	"uri": "/prvdlworkshop/lab4/",
+	"title": "실습5. 제목",
+	"tags": [],
+	"description": "",
+	"content": "실습에 대한 설명을 적습니다. 큰제목  순서를 가이드합니다.   "
+},
+{
+	"uri": "/prvdlworkshop/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/prvdlworkshop/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/prvdlworkshop/credits/",
+	"title": "크레딧",
+	"tags": [],
+	"description": "",
+	"content": "패키지와 라이브러리  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; horsey - Progressive and customizable autocomplete component clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support  도구  Netlify - Continuous deployement and hosting of this documentation Hugo  "
+}]
