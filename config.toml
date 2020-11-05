@@ -1,0 +1,34 @@
+# baseURL 변경
+baseURL = "/prvdlworkshop/"
+languageCode = "ko-KR"
+defaultContentLanguage = "ko"
+
+# title 변경
+title = "부장님도 좋아하는 AWS의 안전한 Private Data Lake"
+theme = "hugo-theme-learn"
+themesdir = "."
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+#ignoreFiles = [ "\\.*lab3\\.*" ]
+
+# description, author 변경
+[params]
+  description = "AWS Industry Week 2020의 세션중 하나인 부장님도 좋아하는 AWS의 안전한 Private Data Lake의 워크샵"
+  author = "Gyuho Song"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  themeVariant = "aws"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[Languages.ko]
+title = "부장님도 좋아하는 AWS의 안전한 Private Data Lake"
+weight = 1
+languageName = "한국어"
+
+[[Languages.ko.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bullhorn'></i> 크레딧"
+url = "/credits/"
+weight = 30
