@@ -76,13 +76,112 @@ Repeat crawls of S3 data stores: Crawl all folders
 포함경로: estate/%
 다른 데이터 스토어 추가: 아니요
 IAM 역할: prv-dl-workshop-role
-빈도: 온디맨드 실
+빈도: 온디맨드 실행
 데이터 베이스: 데이터베이스 추가 버튼을 누르고 prv-dl-db 입력
 ```
 5. 방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
 ![run_glue_aurora_crawler](/prvdlworkshop/images/run_glue_aurora_crawler.png)
 
+6. 등록된 Aurora 데이터 베이스 테이블을 확인
+![table_crawl](/prvdlworkshop/images/table_crawl.png)
 
+### Glue를 이용한 데이터 loading 작업
+등록되어 있는 Aurora Table에 있는 데이터를 S3로 가져오는 작업을 수행합니다.
+1. AWS Glue 콘솔에서 ETL 카테고리 아래에 있는 작업 페이지로 들어갑니다.
+![glue_console_job](/prvdlworkshop/images/glue_console_job.png)
+
+2. 작업 추가 버튼을 눌러서 작업을 등록합니다. 아래의 정보를 참조합니다.
+```
+이름: prv-dl-glue-job-sfct-load-to-s3
+IAM 역할: prv-dl-workshop-role
+Type: Spark
+Glue Version: Spark 2.4, Python 3 with improved job startup times (Glue Version 2.0)
+작업 실행 대상: AWS Glue가 생성하여 제안하는 스크립트
+스크립트 파일 이름: prv-dl-glue-job-sfct-load-job
+데이터 원본: estate_sfct
+변환 유형 선택: 스키마 변경
+데이터 스토어: Amazon S3
+형식: parquet
+연결: 연결 추가 버튼을 클릭해서 새로운 S3 연결 생성
+연결 이름: prv-dl-connection-to-s3
+연결 VPC: Target VPC
+연결 서브넷: Target VPC의 private subnet 중 하나
+연결 보안 그룹: prv-dl-glue-sg
+대상 경로: <이전 Step에서 생성한 S3 bucket의 하위 폴더를 지정>: s3://prv-dl-<USERID>/rawdata
+Output Schema Definition: 작업 저장 및 스크립트 편집 버튼 클릭
+스키마 편집 화면에서 우측 상단에 있는 X 버튼을 눌러서 창을 닫음
+```
+3. 등록된 작업을 선택하고 작업 실행 버튼을 클릭합니다.
+![run_glue_job](/prvdlworkshop/images/run_glue_job.png)
+
+4. 작업이 완료되면 대상 S3 버킷에서 데이터를 확인합니다.
+![s3_raw_data_check](/prvdlworkshop/images/s3_raw_data_check.png)
+
+5. S3로 로딩된 데이터를 Crawler를 이용하여 Glue Catalog에 다시 추가합니다. 크롤러 페이지에서 크롤러 추가 버튼을 클릭합니다.
+![glue_aurora_crawler](/prvdlworkshop/images/glue_aurora_crawler.png)
+
+6. 다음의 정보를 참조하여 크롤러를 생성합니다.
+```
+크롤러 이름: prv-dl-rawdata-crawler
+Crawler source type: Data stores
+Repeat crawls of S3 data stores: Crawl all folders
+데이터 스토어 선택: S3
+연결: prv-dl-connection-to-s3
+포함경로: s3://prv-dl-<USERID>/rawdata
+다른 데이터 스토어 추가: 아니요
+IAM 역할: prv-dl-workshop-role
+빈도: 온디맨드 실행
+데이터 베이스: prv-dl-db
+```
+
+7. 방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
+![run_glue_aurora_crawler](/prvdlworkshop/images/run_glue_aurora_crawler.png)
+
+8. S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인
+![table_crawl](/prvdlworkshop/images/table_crawl.png)
+
+
+### Glue Dev endpoint Notebook을 활용한 Dictionary 데이터 매핑
+Raw 데이터에 SFCT의 Dictionary 정보를 매핑 시켜서 분석 결과를 직관적으로 이해할 수 있게 변환합니다.
+Dictionary 정보는 Kaggle의 Fannie Mae & Freddie Mac Database 2008-2018 페이지에서 pdf 파일로 제공합니다.
+작업을 간편하게 하기 위해서 Glue의 DevEndpoint 노트북을 사용했습니다.
+
+1. AWS Glue 콘솔에서 개발 엔드포인트 페이지로 들어간 후 엔드포인트 추가 버튼을 클릭합니다.
+![add_glue_dev_ep](/prvdlworkshop/images/add_glue_dev_ep.png)
+2. 아래 정보를 참조해서 개발 엔드포인트를 생성합니다.
+```
+개발 엔드포인트 이름: prv-dl-glue-dev-ep
+IAM 역할: prv-dl-workshop-role
+네트워킹: VPC, 서브넷 및 보안 그룹 선택
+VPC: Target VPC
+서브넷: Target VPC의 private subnet 중 하나
+보안 그룹: prv-dl-glue-sg
+```
+3. 노트북 페이지에서 SageMaker 노트북 탭을 선택하고 노트북 생성 버튼을 클릭합니다.
+![dev_ep_notebook](/prvdlworkshop/images/dev_ep_notebook.png)
+4. 아래 정보를 참조해서 노트북을 생성합니다.
+```
+노트북 이름: aws-glue-prv-dl-notebook
+개발 엔드포인트에 연결: prv-dl-glue-dev-ep
+IAM 역할: IAM 역할 생성 선택 후 이름은 끝에 prv-dl-role을 추가합니다.
+VPC: Target VPC
+서브넷: Target VPC의 private subnet 중 하나
+보안 그룹: prv-dl-glue-sg
+```
+5. Glue notebook Role에 S3에 접근 할 수 있는 권한을 부여하기 위해서 AWS 서비스 콘솔에서 IAM service로 이동합니다.
+![mv_iam_glue](/prvdlworkshop/images/mv_iam_glue.png)
+
+6. 검색창에 prv-dl으로 검색해서 방금 생성한 AWSGlueServiceSageMakerNotebookRole-prv-dl-role을 선택합니다.
+![glue_nb_role_mod](/prvdlworkshop/images/glue_nb_role_mod.png)
+
+7. 정책 연결 버튼을 눌러서 policy를 추가합니다.
+![add_pol_glue_nb](/prvdlworkshop/images/add_pol_glue_nb.png)
+
+8. 검색창에 s3full을 입력해서 AmazonS3FullAccess를 선택하고 옆에 있는 체크박스를 클릭한 뒤 정책 연결 버튼을 클릭합니다.
+![add_s3_full_pol](/prvdlworkshop/images/add_s3_full_pol.png)
+
+9. 다시 Glue 서비스 콘솔로 돌아온 뒤 생성한 노트북을 엽니다. 노트북 페이지에서 노트북 열기 버튼을 클릭합니다.
+![open_nb](/prvdlworkshop/images/open_nb.png)
 
 
 ---

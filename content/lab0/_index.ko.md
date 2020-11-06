@@ -74,20 +74,25 @@ ssh -i <ssh private key> ec2-user@<instance ip or dns name>
 aws configure
 ```
 
-3. 실습에서 사용할 데이터를 다운로드 하고 압축을 풉니다.
+3. 실습에서 사용할 S3 버킷을 생성합니다.
+```
+aws s3 mb s3://prv-dl-<USERID> --region ap-northeast-2
+```
+
+4. 실습에서 사용할 데이터를 다운로드 하고 압축을 풉니다.
 ```
 wget "https://private-data-lake-iw2020.s3.ap-northeast-2.amazonaws.com/sfct_dataset/SFCT.tar.gz"
 tar xvfz SFCT.tar.gz
 ```
 
-4. EC2에 mysql을 설치하고 Aurora에 접속합니다. 아까 복사해둔 Aurora database의 endpoint를 이용합니다.
+5. EC2에 mysql을 설치하고 Aurora에 접속합니다. 아까 복사해둔 Aurora database의 endpoint를 이용합니다.
 ```
 sudo yum install mysql
 mysql -h <Aurora database endpoint> -P 3306 -u admin -p
 ```
 암호를 묻는 창에는 아까 설정한 'awsiw2020'를 입력합니다.
 
-5. Database schema와 user를 생성합니다.
+6. Database schema와 user를 생성합니다.
 ```
 CREATE DATABASE estate;
 
@@ -96,7 +101,7 @@ CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'user1'@'%' WITH GRANT OPTION;
 ```
 
-6. Table을 생성하고 데이터를 Table로 load합니다.
+7. Table을 생성하고 데이터를 Table로 load합니다.
 ```
 USE estate;
 
@@ -191,10 +196,11 @@ FIELDS TERMINATED BY ' '
 OPTIONALLY ENCLOSED BY '"';
 
 ```
-7. Table에 저장된 데이터를 살펴봅니다. Dictionary 데이터를 매핑하기 전이기 때문에 모든 값이 숫자형으로 되어 있는 것을 확인할 수 있습니다.
+8. Table에 저장된 데이터를 살펴봅니다. Dictionary 데이터를 매핑하기 전이기 때문에 모든 값이 숫자형으로 되어 있는 것을 확인할 수 있습니다.
 ```
 select * from SFCT limit 10;
 ```
+
 
 
 ### Private Endpoint 설정
