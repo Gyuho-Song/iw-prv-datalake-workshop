@@ -12,20 +12,20 @@
     <title>실습1. HOL 환경 구성 :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
 
     
-    <link href="/prvdlworkshop/css/nucleus.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hybrid.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/featherlight.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/auto-complete.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/theme.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hugo-theme.css?1604667376" rel="stylesheet">
+    <link href="/prvdlworkshop/css/nucleus.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hybrid.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/featherlight.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/auto-complete.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/theme.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hugo-theme.css?1604679281" rel="stylesheet">
     
-      <link href="/prvdlworkshop/css/theme-aws.css?1604667376" rel="stylesheet">
+      <link href="/prvdlworkshop/css/theme-aws.css?1604679281" rel="stylesheet">
     
 
-    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604679281"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604667376"></script>
-<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604679281"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604679281"></script>
 <script type="text/javascript">
     
         var baseurl = "\/prvdlworkshop\/";
     
 </script>
-<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604679281"></script>
 
     
   </div>
@@ -125,13 +125,13 @@
  
   
     
-    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. 제목" class="dd-item 
+    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. LakeFormation을 활용한 권한 설정" class="dd-item 
         
         
         
         ">
       <a href="/prvdlworkshop/lab2/">
-          <b>3. </b>실습3. 제목
+          <b>3. </b>실습3. LakeFormation을 활용한 권한 설정
           
             <i class="fas fa-check read-icon"></i>
           
@@ -370,7 +370,7 @@ DB 클러스터 식별자 : prv-dl-db-cluster
 <h3 id="aurora-셋업-및-데이터셋-로드">Aurora 셋업 및 데이터셋 로드</h3>
 <p>실습에 사용할 데이터셋을 다운받아서 Aurora 데이터베이스로 적재합니다.</p>
 <ol>
-<li>Aurora 데이터베이스에 접속하여 작업을 할 EC2 Instance에 ssh로 접속합니다. EC2 정보는 EC2 console에서 확인할 수 있습니다.
+<li>Aurora 데이터베이스에 접속하여 작업을 할 EC2 Instance에 ssh로 접속합니다. EC2 정보는 EC2 console에서 확인할 수 있습니다. Source VPC에 있는 EC2에 접속합니다.
 <img src="/prvdlworkshop/images/ec2_view.png" alt="ec2_view"></li>
 </ol>
 <pre><code>ssh -i &lt;ssh private key&gt; ec2-user@&lt;instance ip or dns name&gt;
@@ -659,19 +659,19 @@ OPTIONALLY ENCLOSED BY '&quot;';
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/prvdlworkshop/js/clipboard.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/jquery.sticky.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/featherlight.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/highlight.pack.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/clipboard.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/jquery.sticky.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/featherlight.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/highlight.pack.js?1604679281"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/learn.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/hugo-learn.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/learn.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/hugo-learn.js?1604679281"></script>
 
-    <link href="/prvdlworkshop/mermaid/mermaid.css?1604667376" rel="stylesheet" />
-    <script src="/prvdlworkshop/mermaid/mermaid.js?1604667376"></script>
+    <link href="/prvdlworkshop/mermaid/mermaid.css?1604679281" rel="stylesheet" />
+    <script src="/prvdlworkshop/mermaid/mermaid.js?1604679281"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

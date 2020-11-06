@@ -180,8 +180,48 @@ VPC: Target VPC
 8. 검색창에 s3full을 입력해서 AmazonS3FullAccess를 선택하고 옆에 있는 체크박스를 클릭한 뒤 정책 연결 버튼을 클릭합니다.
 ![add_s3_full_pol](/prvdlworkshop/images/add_s3_full_pol.png)
 
-9. 다시 Glue 서비스 콘솔로 돌아온 뒤 생성한 노트북을 엽니다. 노트북 페이지에서 노트북 열기 버튼을 클릭합니다.
+9. 실습을 진행하고 있는 Labtop PC 웹브라우져의 주소창에 다음의 url을 입력해서 노트북을 다운받습니다.
+```
+https://private-data-lake-iw2020.s3.ap-northeast-2.amazonaws.com/sfct_dataset/prv-dl-etl-transform.ipynb
+```
+
+10. 다시 Glue 서비스 콘솔로 돌아온 뒤 생성한 노트북을 엽니다. 노트북 페이지에서 노트북 열기 버튼을 클릭합니다.
 ![open_nb](/prvdlworkshop/images/open_nb.png)
+
+11. 다운받았던 prv-dl-etl-transform.ipynb 노트북을 업로드 버튼을 눌러서 올립니다.
+![upload_notebook](/prvdlworkshop/images/upload_notebook.png)
+
+12. prv-dl-etl-transform.ipynb을 클릭해서 내용을 확인합니다. 셀의 내용을 확인하면서 차례 차례 실행합니다. 한번에 전부 수행하시려면 메뉴에 있는 Cell 버튼을 눌러서 메뉴를 펼치고 Run All을 클릭합니다.
+![run_jupyter_cell](/prvdlworkshop/images/run_jupyter_cell.png)
+
+13. 마지막 부분의 Cell에 있는 S3 bucket명을 현재 실습을 진행하고 있는 버킷으로 바꿔줍니다.
+![jupyter_nb_bucket](/prvdlworkshop/images/jupyter_nb_bucket.png)
+
+14. 수행이 완료되면 실습을 진행하고 있는 S3 버킷의 dictionaried_data 폴더에 데이터가 정상적으로 처리되었는지 확인합니다.
+![s3_raw_data_check](/prvdlworkshop/images/s3_raw_data_check.png)
+
+15. S3로 로딩된 데이터를 Crawler를 이용하여 Glue Catalog에 다시 추가합니다. 크롤러 페이지에서 크롤러 추가 버튼을 클릭합니다.
+![glue_aurora_crawler](/prvdlworkshop/images/glue_aurora_crawler.png)
+
+16. 다음의 정보를 참조하여 크롤러를 생성합니다.
+```
+크롤러 이름: prv-dl-rawdata-crawler
+Crawler source type: Data stores
+Repeat crawls of S3 data stores: Crawl all folders
+데이터 스토어 선택: S3
+연결: prv-dl-connection-to-s3
+포함경로: s3://prv-dl-<USERID>/dictionaried_data
+다른 데이터 스토어 추가: 아니요
+IAM 역할: prv-dl-workshop-role
+빈도: 온디맨드 실행
+데이터 베이스: prv-dl-db
+```
+
+17. 방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
+![run_glue_aurora_crawler](/prvdlworkshop/images/run_glue_aurora_crawler.png)
+
+18. S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인
+![table_crawl](/prvdlworkshop/images/table_crawl.png)
 
 
 ---

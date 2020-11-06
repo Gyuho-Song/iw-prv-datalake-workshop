@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/prvdlworkshop/images/favicon.png" type="image/png">
 
-    <title>실습3. 제목 :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
+    <title>실습3. LakeFormation을 활용한 권한 설정 :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
 
     
-    <link href="/prvdlworkshop/css/nucleus.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hybrid.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/featherlight.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/auto-complete.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/theme.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hugo-theme.css?1604667376" rel="stylesheet">
+    <link href="/prvdlworkshop/css/nucleus.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hybrid.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/featherlight.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/auto-complete.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/theme.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hugo-theme.css?1604679281" rel="stylesheet">
     
-      <link href="/prvdlworkshop/css/theme-aws.css?1604667376" rel="stylesheet">
+      <link href="/prvdlworkshop/css/theme-aws.css?1604679281" rel="stylesheet">
     
 
-    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604679281"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604667376"></script>
-<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604679281"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604679281"></script>
 <script type="text/javascript">
     
         var baseurl = "\/prvdlworkshop\/";
     
 </script>
-<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604679281"></script>
 
     
   </div>
@@ -125,13 +125,13 @@
  
   
     
-    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. 제목" class="dd-item 
+    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. LakeFormation을 활용한 권한 설정" class="dd-item 
         parent
         active
         
         ">
       <a href="/prvdlworkshop/lab2/">
-          <b>3. </b>실습3. 제목
+          <b>3. </b>실습3. LakeFormation을 활용한 권한 설정
           
             <i class="fas fa-check read-icon"></i>
           
@@ -258,7 +258,7 @@
             
           
           
-            <a href='/prvdlworkshop/'>홈</a> > 실습3. 제목
+            <a href='/prvdlworkshop/'>홈</a> > 실습3. LakeFormation을 활용한 권한 설정
           
          
           
@@ -271,9 +271,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#table-of-contents">Table of Contents</a>
       <ul>
-        <li><a href="#큰제목">큰제목</a></li>
+        <li><a href="#redshift-spectrum이-사용할-role-생성">RedShift Spectrum이 사용할 Role 생성</a></li>
+        <li><a href="#lakeformation으로-redshift-spectrum에서-접근-가능한-컬럼의-권한-설정">LakeFormation으로 Redshift Spectrum에서 접근 가능한 컬럼의 권한 설정</a></li>
+        <li><a href="#redshift-클러스터-생성">Redshift 클러스터 생성</a></li>
+        <li><a href="#redshift-접속-환경-설정">RedShift 접속 환경 설정</a></li>
       </ul>
     </li>
   </ul>
@@ -293,7 +296,7 @@
           
             <h1>
               
-              실습3. 제목
+              실습3. LakeFormation을 활용한 권한 설정
             </h1>
           
 
@@ -302,11 +305,93 @@
 
 
 
-	<p><strong>실습에 대한 설명을 적습니다.</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<h3 id="큰제목">큰제목</h3>
+	<p><strong>이전 단계에서 처리한 데이터 중 민감한 데이터 컬럼에 대한 권한을 LakeFormation을 이용하여 제어합니다. 본 실습에서는 인종 정보가 포함된 borrower_race컬럼들과 co_borrower_race 컬럼들을 민감한 데이터라고 가정했습니다.</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="table-of-contents">Table of Contents</h2>
 <ol>
-<li>순서를 가이드합니다.</li>
+<li>RedShift Spectrum이 사용할 Role 생성</li>
+<li>LakeFormation으로 Redshift Spectrum에서 접근 가능한 컬럼의 권한 설정</li>
+<li>Redshift 클러스터 생성</li>
+<li>RedShift 접속 환경 설정</li>
+<li>RedShift Spectrum을 이용한 데이터 loading</li>
 </ol>
+<h3 id="redshift-spectrum이-사용할-role-생성">RedShift Spectrum이 사용할 Role 생성</h3>
+<p>IAM 서비스에서 RedShift Spectrum이 사용할 Role을 생성합니다.</p>
+<ol>
+<li>
+<p>IAM 서비스 콘솔로 이동합니다.<br>
+<img src="/prvdlworkshop/images/mv_iam_glue.png" alt="mv_iam_glue"></p>
+</li>
+<li>
+<p>역할만들기 유형에서 AWS 서비스가 선택되어 있는지 확인합니다.
+<img src="/prvdlworkshop/images/iam_glue_service.png" alt="iam_glue_service"></p>
+</li>
+<li>
+<p>화면 하단에서 Redshift를 선택합니다. 사용 사례는 Redshift - Customizable 선택합니다.
+<img src="/prvdlworkshop/images/redshift_iam_role.png" alt="redshift_iam_role"></p>
+</li>
+<li>
+<p>권한 정책 연결에서 다음의 정책들을 선택합니다.</p>
+</li>
+</ol>
+<pre><code>AmazonRedshiftFullAccess
+AmazonS3FullAccess
+</code></pre><ol start="5">
+<li>역할 이름에 <em>prv-dl-redshift-role</em>을 입력하고 역할을 생성합니다.</li>
+</ol>
+<h3 id="lakeformation으로-redshift-spectrum에서-접근-가능한-컬럼의-권한-설정">LakeFormation으로 Redshift Spectrum에서 접근 가능한 컬럼의 권한 설정</h3>
+<p>이전 단계에서 생성한 rawdata table에 있는 컬럼중에 Redshift Spectrum이 접근할 수 있는 컬럼들에 대한 권한 설정을 합니다.
+인종 정보가 포함된 borrower_race컬럼들과 co_borrower_race 컬럼들을 제외한 컬럼들을 선택합니다.</p>
+<ol>
+<li>
+<p>AWS Lake Formation 서비스 콘솔로 이동합니다.
+<img src="/prvdlworkshop/images/aws_lf_console.png" alt="aws_lf_console"></p>
+</li>
+<li>
+<p>Permissions 항목 하단에 있는 Data permissions 페이지로 이동하여 Grant 버튼을 클릭합니다.
+<img src="/prvdlworkshop/images/lf_grant.png" alt="lf_grant"></p>
+</li>
+<li>
+<p>Grant permissions 페이지에서 다음의 정보를 참조하여 입력하고 Grant 버튼을 클릭합니다..</p>
+</li>
+</ol>
+<pre><code>IAM users and roles: prv-dl-redshift-role
+Database: prv-dl-db
+Table: dictionaried_data
+Columns: include Columns
+include columns: borrower_race1~5, co_borrower_race1~5를 제외한 모든 컬
+Table permissions: Select만 선택
+</code></pre><h3 id="redshift-클러스터-생성">Redshift 클러스터 생성</h3>
+<ol>
+<li>
+<p>RedShift 서비스 콘솔로 이동합니다.
+<img src="/prvdlworkshop/images/mv_rs_console.png" alt="mv_rs_console"></p>
+</li>
+<li>
+<p>클러스터 생성 전에 Private subnet에 Redshift를 배포하기 위한 서브넷 그룹을 생성합니다.
+구성 항목 하단에 있는 서브넷 그룹을 선택하여 클러스터 서브넷 그룹 페이지로 이동한 뒤 클러스터 서브넷 그룹 생성 버튼을 클릭합니다.
+<img src="/prvdlworkshop/images/cluster_subnet_group.png" alt="cluster_subnet_group"></p>
+</li>
+<li>
+<p>클러스터 서브넷 그룹 생성 페이지가 나오면 다음의 정보를 참조하여 서브넷 그룹을 생성합니다.</p>
+</li>
+</ol>
+<pre><code>이름: prv-dl-private-subnet-group
+설명: RedShift private subnet group for prv dl workshop
+VPC: Target VPC
+가용영역 a에 있는 서브넷 중 Private subnet을 선택
+가용영역 c에 있는 서브넷 중 Private subnet을 선택
+</code></pre><ol start="4">
+<li>이제 Redshift 클러스터를 만듭니다. 클러스터 생성 버튼을 누르고 다음의 정보를 참조하여 Redshift 클러스터를 생성합니다.</li>
+</ol>
+<pre><code>클러스터 식별자: prv-dl-dw-cluster
+마스터 사용자 이름: awsuser
+마스터 사용자 암호: awsiw2020
+추가 구성: 기본 값 사용을 해제해서 수정이 가능하게 변경
+VPC: Target VPC
+VPC 보안 그룹: prv-dl-redshift-sg
+클러스터 서브넷 그룹: prv-dl-private-subnet-group
+향상된 VPC 라우팅: 활성화
+</code></pre><h3 id="redshift-접속-환경-설정">RedShift 접속 환경 설정</h3>
 <hr>
 <!-- raw HTML omitted -->
 
@@ -453,19 +538,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/prvdlworkshop/js/clipboard.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/jquery.sticky.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/featherlight.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/highlight.pack.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/clipboard.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/jquery.sticky.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/featherlight.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/highlight.pack.js?1604679281"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/learn.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/hugo-learn.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/learn.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/hugo-learn.js?1604679281"></script>
 
-    <link href="/prvdlworkshop/mermaid/mermaid.css?1604667376" rel="stylesheet" />
-    <script src="/prvdlworkshop/mermaid/mermaid.js?1604667376"></script>
+    <link href="/prvdlworkshop/mermaid/mermaid.css?1604679281" rel="stylesheet" />
+    <script src="/prvdlworkshop/mermaid/mermaid.js?1604679281"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

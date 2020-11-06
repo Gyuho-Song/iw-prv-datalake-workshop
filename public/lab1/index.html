@@ -12,20 +12,20 @@
     <title>실습2. 데이터 탐색 및 ETL :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
 
     
-    <link href="/prvdlworkshop/css/nucleus.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hybrid.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/featherlight.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/auto-complete.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/theme.css?1604667376" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hugo-theme.css?1604667376" rel="stylesheet">
+    <link href="/prvdlworkshop/css/nucleus.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hybrid.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/featherlight.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/auto-complete.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/theme.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hugo-theme.css?1604679281" rel="stylesheet">
     
-      <link href="/prvdlworkshop/css/theme-aws.css?1604667376" rel="stylesheet">
+      <link href="/prvdlworkshop/css/theme-aws.css?1604679281" rel="stylesheet">
     
 
-    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604679281"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604667376"></script>
-<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604679281"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604679281"></script>
 <script type="text/javascript">
     
         var baseurl = "\/prvdlworkshop\/";
     
 </script>
-<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604667376"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604679281"></script>
 
     
   </div>
@@ -125,13 +125,13 @@
  
   
     
-    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. 제목" class="dd-item 
+    <li data-nav-id="/prvdlworkshop/lab2/" title="실습3. LakeFormation을 활용한 권한 설정" class="dd-item 
         
         
         
         ">
       <a href="/prvdlworkshop/lab2/">
-          <b>3. </b>실습3. 제목
+          <b>3. </b>실습3. LakeFormation을 활용한 권한 설정
           
             <i class="fas fa-check read-icon"></i>
           
@@ -505,8 +505,57 @@ VPC: Target VPC
 <img src="/prvdlworkshop/images/add_s3_full_pol.png" alt="add_s3_full_pol"></p>
 </li>
 <li>
+<p>실습을 진행하고 있는 Labtop PC 웹브라우져의 주소창에 다음의 url을 입력해서 노트북을 다운받습니다.</p>
+</li>
+</ol>
+<pre><code>https://private-data-lake-iw2020.s3.ap-northeast-2.amazonaws.com/sfct_dataset/prv-dl-etl-transform.ipynb
+</code></pre><ol start="10">
+<li>
 <p>다시 Glue 서비스 콘솔로 돌아온 뒤 생성한 노트북을 엽니다. 노트북 페이지에서 노트북 열기 버튼을 클릭합니다.
 <img src="/prvdlworkshop/images/open_nb.png" alt="open_nb"></p>
+</li>
+<li>
+<p>다운받았던 prv-dl-etl-transform.ipynb 노트북을 업로드 버튼을 눌러서 올립니다.
+<img src="/prvdlworkshop/images/upload_notebook.png" alt="upload_notebook"></p>
+</li>
+<li>
+<p>prv-dl-etl-transform.ipynb을 클릭해서 내용을 확인합니다. 셀의 내용을 확인하면서 차례 차례 실행합니다. 한번에 전부 수행하시려면 메뉴에 있는 Cell 버튼을 눌러서 메뉴를 펼치고 Run All을 클릭합니다.
+<img src="/prvdlworkshop/images/run_jupyter_cell.png" alt="run_jupyter_cell"></p>
+</li>
+<li>
+<p>마지막 부분의 Cell에 있는 S3 bucket명을 현재 실습을 진행하고 있는 버킷으로 바꿔줍니다.
+<img src="/prvdlworkshop/images/jupyter_nb_bucket.png" alt="jupyter_nb_bucket"></p>
+</li>
+<li>
+<p>수행이 완료되면 실습을 진행하고 있는 S3 버킷의 dictionaried_data 폴더에 데이터가 정상적으로 처리되었는지 확인합니다.
+<img src="/prvdlworkshop/images/s3_raw_data_check.png" alt="s3_raw_data_check"></p>
+</li>
+<li>
+<p>S3로 로딩된 데이터를 Crawler를 이용하여 Glue Catalog에 다시 추가합니다. 크롤러 페이지에서 크롤러 추가 버튼을 클릭합니다.
+<img src="/prvdlworkshop/images/glue_aurora_crawler.png" alt="glue_aurora_crawler"></p>
+</li>
+<li>
+<p>다음의 정보를 참조하여 크롤러를 생성합니다.</p>
+</li>
+</ol>
+<pre><code>크롤러 이름: prv-dl-rawdata-crawler
+Crawler source type: Data stores
+Repeat crawls of S3 data stores: Crawl all folders
+데이터 스토어 선택: S3
+연결: prv-dl-connection-to-s3
+포함경로: s3://prv-dl-&lt;USERID&gt;/dictionaried_data
+다른 데이터 스토어 추가: 아니요
+IAM 역할: prv-dl-workshop-role
+빈도: 온디맨드 실행
+데이터 베이스: prv-dl-db
+</code></pre><ol start="17">
+<li>
+<p>방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
+<img src="/prvdlworkshop/images/run_glue_aurora_crawler.png" alt="run_glue_aurora_crawler"></p>
+</li>
+<li>
+<p>S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인
+<img src="/prvdlworkshop/images/table_crawl.png" alt="table_crawl"></p>
 </li>
 </ol>
 <hr>
@@ -645,7 +694,7 @@ VPC: Target VPC
 			<a class="nav nav-prev" href="/prvdlworkshop/lab0/" title="실습1. HOL 환경 구성"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/prvdlworkshop/lab2/" title="실습3. 제목" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/prvdlworkshop/lab2/" title="실습3. LakeFormation을 활용한 권한 설정" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -655,19 +704,19 @@ VPC: Target VPC
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/prvdlworkshop/js/clipboard.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/jquery.sticky.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/featherlight.min.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/highlight.pack.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/clipboard.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/jquery.sticky.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/featherlight.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/highlight.pack.js?1604679281"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/learn.js?1604667376"></script>
-    <script src="/prvdlworkshop/js/hugo-learn.js?1604667376"></script>
+    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/learn.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/hugo-learn.js?1604679281"></script>
 
-    <link href="/prvdlworkshop/mermaid/mermaid.css?1604667376" rel="stylesheet" />
-    <script src="/prvdlworkshop/mermaid/mermaid.js?1604667376"></script>
+    <link href="/prvdlworkshop/mermaid/mermaid.css?1604679281" rel="stylesheet" />
+    <script src="/prvdlworkshop/mermaid/mermaid.js?1604679281"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

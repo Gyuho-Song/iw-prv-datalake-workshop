@@ -63,8 +63,8 @@ DB 클러스터 식별자 : prv-dl-db-cluster
 
 ### Aurora 셋업 및 데이터셋 로드
 실습에 사용할 데이터셋을 다운받아서 Aurora 데이터베이스로 적재합니다.
-1. Aurora 데이터베이스에 접속하여 작업을 할 EC2 Instance에 ssh로 접속합니다. EC2 정보는 EC2 console에서 확인할 수 있습니다.
- ![ec2_view](/prvdlworkshop/images/ec2_view.png)
+1. Aurora 데이터베이스에 접속하여 작업을 할 EC2 Instance에 ssh로 접속합니다. EC2 정보는 EC2 console에서 확인할 수 있습니다. Source VPC에 있는 EC2에 접속합니다.
+![ec2_view](/prvdlworkshop/images/ec2_view.png)
 ```
 ssh -i <ssh private key> ec2-user@<instance ip or dns name>
 ```
