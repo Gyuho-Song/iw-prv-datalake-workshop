@@ -1,10 +1,12 @@
 ---
-title: 실습2. 데이터 탐색 및 ETL
+title: 실습2. Glue를 활용한 데이터 ETL 작업 수행
 weight: 30
 pre: "<b>2. </b>"
 ---
 
 **Glue를 사용하기 위한 환경 설정을 하고 이를 이용해서 데이터를 Loading합니다. 이후에는 Glue Dev Endpoint 노트북을 이용하여 Dictionary 데이터를 매핑시키는 데이터 ETL 작업을 진행합니다.** <br/><br/>
+
+![phase1_archi](/prvdlworkshop/images/phase1_archi.png)
 
 ## Table of Contents
 
@@ -217,12 +219,13 @@ IAM 역할: prv-dl-workshop-role
 데이터 베이스: prv-dl-db
 ```
 
-17. 방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
+17. 방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭합니다.
 ![run_glue_aurora_crawler](/prvdlworkshop/images/run_glue_aurora_crawler.png)
 
-18. S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인
+18. S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인합니다.
 ![table_crawl](/prvdlworkshop/images/table_crawl.png)
 
+### 실습3에서 계속
 
 ---
 <p align="center">

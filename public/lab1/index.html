@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/prvdlworkshop/images/favicon.png" type="image/png">
 
-    <title>실습2. 데이터 탐색 및 ETL :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
+    <title>실습2. Glue를 활용한 데이터 ETL 작업 수행 :: 부장님도 좋아하는 AWS의 안전한 Private Data Lake</title>
 
     
-    <link href="/prvdlworkshop/css/nucleus.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hybrid.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/featherlight.min.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/auto-complete.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/theme.css?1604679281" rel="stylesheet">
-    <link href="/prvdlworkshop/css/hugo-theme.css?1604679281" rel="stylesheet">
+    <link href="/prvdlworkshop/css/nucleus.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/fontawesome-all.min.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hybrid.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/featherlight.min.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/perfect-scrollbar.min.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/auto-complete.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/atom-one-dark-reasonable.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/theme.css?1604851700" rel="stylesheet">
+    <link href="/prvdlworkshop/css/hugo-theme.css?1604851700" rel="stylesheet">
     
-      <link href="/prvdlworkshop/css/theme-aws.css?1604679281" rel="stylesheet">
+      <link href="/prvdlworkshop/css/theme-aws.css?1604851700" rel="stylesheet">
     
 
-    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/jquery-3.3.1.min.js?1604851700"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604679281"></script>
-<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604679281"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/lunr.min.js?1604851700"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/auto-complete.js?1604851700"></script>
 <script type="text/javascript">
     
         var baseurl = "\/prvdlworkshop\/";
     
 </script>
-<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604679281"></script>
+<script type="text/javascript" src="/prvdlworkshop/js/search.js?1604851700"></script>
 
     
   </div>
@@ -101,13 +101,13 @@
  
   
     
-    <li data-nav-id="/prvdlworkshop/lab1/" title="실습2. 데이터 탐색 및 ETL" class="dd-item 
+    <li data-nav-id="/prvdlworkshop/lab1/" title="실습2. Glue를 활용한 데이터 ETL 작업 수행" class="dd-item 
         parent
         active
         
         ">
       <a href="/prvdlworkshop/lab1/">
-          <b>2. </b>실습2. 데이터 탐색 및 ETL
+          <b>2. </b>실습2. Glue를 활용한 데이터 ETL 작업 수행
           
             <i class="fas fa-check read-icon"></i>
           
@@ -149,13 +149,13 @@
  
   
     
-    <li data-nav-id="/prvdlworkshop/lab3/" title="실습4. 제목" class="dd-item 
+    <li data-nav-id="/prvdlworkshop/lab3/" title="실습4. 데이터 분석 마트 생성 및 시각화" class="dd-item 
         
         
         
         ">
       <a href="/prvdlworkshop/lab3/">
-          <b>4. </b>실습4. 제목
+          <b>4. </b>실습4. 데이터 분석 마트 생성 및 시각화
           
             <i class="fas fa-check read-icon"></i>
           
@@ -258,7 +258,7 @@
             
           
           
-            <a href='/prvdlworkshop/'>홈</a> > 실습2. 데이터 탐색 및 ETL
+            <a href='/prvdlworkshop/'>홈</a> > 실습2. Glue를 활용한 데이터 ETL 작업 수행
           
          
           
@@ -278,6 +278,7 @@
         <li><a href="#glue를-이용한-데이터-crawling">Glue를 이용한 데이터 Crawling</a></li>
         <li><a href="#glue를-이용한-데이터-loading-작업">Glue를 이용한 데이터 loading 작업</a></li>
         <li><a href="#glue-dev-endpoint-notebook을-활용한-dictionary-데이터-매핑">Glue Dev endpoint Notebook을 활용한 Dictionary 데이터 매핑</a></li>
+        <li><a href="#실습3에서-계속">실습3에서 계속</a></li>
       </ul>
     </li>
   </ul>
@@ -297,7 +298,7 @@
           
             <h1>
               
-              실습2. 데이터 탐색 및 ETL
+              실습2. Glue를 활용한 데이터 ETL 작업 수행
             </h1>
           
 
@@ -307,6 +308,7 @@
 
 
 	<p><strong>Glue를 사용하기 위한 환경 설정을 하고 이를 이용해서 데이터를 Loading합니다. 이후에는 Glue Dev Endpoint 노트북을 이용하여 Dictionary 데이터를 매핑시키는 데이터 ETL 작업을 진행합니다.</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="/prvdlworkshop/images/phase1_archi.png" alt="phase1_archi"></p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li>Glue 실행을 위한 IAM role 생성</li>
@@ -550,14 +552,15 @@ IAM 역할: prv-dl-workshop-role
 데이터 베이스: prv-dl-db
 </code></pre><ol start="17">
 <li>
-<p>방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭
+<p>방금 생성한 크롤러를 선택하고 크롤러 실행 버튼을 클릭합니다.
 <img src="/prvdlworkshop/images/run_glue_aurora_crawler.png" alt="run_glue_aurora_crawler"></p>
 </li>
 <li>
-<p>S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인
+<p>S3로 로딩된 데이터가 Glue Catalog Table에 등록되어 있는 것을 확인합니다.
 <img src="/prvdlworkshop/images/table_crawl.png" alt="table_crawl"></p>
 </li>
 </ol>
+<h3 id="실습3에서-계속">실습3에서 계속</h3>
 <hr>
 <!-- raw HTML omitted -->
 
@@ -704,19 +707,19 @@ IAM 역할: prv-dl-workshop-role
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/prvdlworkshop/js/clipboard.min.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/jquery.sticky.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/featherlight.min.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/highlight.pack.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/clipboard.min.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.min.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/perfect-scrollbar.jquery.min.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/jquery.sticky.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/featherlight.min.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/highlight.pack.js?1604851700"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/learn.js?1604679281"></script>
-    <script src="/prvdlworkshop/js/hugo-learn.js?1604679281"></script>
+    <script src="/prvdlworkshop/js/modernizr.custom-3.6.0.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/learn.js?1604851700"></script>
+    <script src="/prvdlworkshop/js/hugo-learn.js?1604851700"></script>
 
-    <link href="/prvdlworkshop/mermaid/mermaid.css?1604679281" rel="stylesheet" />
-    <script src="/prvdlworkshop/mermaid/mermaid.js?1604679281"></script>
+    <link href="/prvdlworkshop/mermaid/mermaid.css?1604851700" rel="stylesheet" />
+    <script src="/prvdlworkshop/mermaid/mermaid.js?1604851700"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

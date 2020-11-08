@@ -214,6 +214,7 @@ AWS의 내부망을 사용하여 데이터를 전송하는데 꼭 필요한 Priv
 3. Glue endpoint도 만듭니다. 마찬가지로 VPC 선택창에서 실습에서 사용할 **Target VPC**를 꼭 선택하셔야 합니다.
 ![create_glue_ep](/prvdlworkshop/images/create_glue_ep.png)
 
+### 실습2에서 계속
 
 ---
 
